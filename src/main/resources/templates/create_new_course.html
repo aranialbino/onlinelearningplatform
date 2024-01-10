@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Shikha Learning Center</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body background="create.avif">
+
+	<div th:insert="headers/header_instructor.html" style="width: 100%;"></div>
+
+	<p class="text-center">
+		<span class="text-center fw-bold text-decoration-underline fs-4">Launch a New Course<br></span>
+		<span th:if="${successMessage}" th:text="${successMessage}" class="alert-info fw-bold"></span>
+		<span th:if="${errorMessage}" th:text="${errorMessage}" class="alert-danger fw-bold"></span>
+	</p>
+
+	<div class="card-body">
+		<form method="post" role="form" th:action="@{/saveNewCourse}" class="form-horizontal"
+			th:object="${createNewCourseModel}">
+
+			<div class="form-group mb-3">
+				<label class="control-label">Department</label>
+
+				<select class="form-control" id="department.id" name="department.id">
+					<option th:each=" department:${deparmentList}" th:value="${department.id}"
+						th:text="${department.name}"></option>
+				</select>
+			</div>
+
+			<div class="form-group mb-3">
+				<label class="control-label">Title</label>
+				<input type="text" id="title" name="title" class="form-control" placeholder="Enter Title" style="border: 2px solid #555;"/>
+			</div>
+			<div class="form-group mb-3">
+				<label class="control-label"> Description</label>
+				<input type="text" id="description" name="description" class="form-control"
+					placeholder="Enter description"style="border: 2px solid #555;" />
+			</div>
+
+			<div class="form-group mb-3">
+				<label class="control-label">Duration (months)</label>
+				<input type="number" id="duration" name="duration" class="form-control" placeholder="Enter duration"style="border: 2px solid #555;" />
+			</div>
+
+			<div class="form-group mb-3">
+				<label class="control-label">Difficulty level</label>
+				<input type="number" id="difficultyLevel" name="difficultyLevel" class="form-control"
+					placeholder="Enter difficultyLevel"style="border: 2px solid #555;" />
+			</div>
+
+			<div class="form-group mb-3">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+	</div>
+</bodybackground="student.avif">
+
+</html>

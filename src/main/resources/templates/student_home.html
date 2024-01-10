@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Shikha Learning Center</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script>
+		function withdrawFromCourse(courseId) {
+			window.location.href = "/withdrawFromCourse?courseId=" + courseId;
+		}
+	</script>
+
+</head>
+
+<body background="student.avif" >
+	<div th:insert="headers/header_student.html" style="width: 100%;"></div>
+
+	<p class="text-center">
+		<span class="text-center fw-bold text-decoration-underline fs-4"> Student's dashboard<br></span>
+		<span th:if="${successMessage}" th:text="${successMessage}" class="alert-info fw-bold"></span>
+		<span th:if="${errorMessage}" th:text="${errorMessage}" class="alert-danger fw-bold"></span>
+	</p>
+
+	<p>
+		<a href="/newCourseRegistrationHome" class="btn btn-primary active" role="button" aria-pressed="true">Enroll to
+			new course
+		</a>
+	</p>
+
+	<div th:if="${ not#lists.isEmpty(studentsDataList)}">
+		<table class="table table-bordered" style="width: 100%;box-align: center;text-align: center;border: 3px solid #333;">
+			<tr>
+				<th>Serial</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Instructor</th>
+				<th>Start Date</th>
+				<th>Progress</th>
+				<th>Withdraw from course</th>
+			</tr>
+			<tr th:each="studentData : ${studentsDataList}">
+				<td th:text="${studentData.serialNum}"></td>
+				<td th:text="${studentData.title}"></td>
+				<td th:text="${studentData.description}"></td>
+				<td th:text="${studentData.instructor}"></td>
+				<td th:text="${studentData.startDate}"></td>
+				<td th:text="${studentData.progress}"></td>
+				<td>
+					<button th:attr="onclick=|withdrawFromCourse('${studentData.courseId}')|">Withdraw</button>
+				</td>
+			</tr>
+			<table>
+	</div>
+	</tr>
+	<table>
+		</div>
+
+</bodybackground="register background.avif">
+
+</html>

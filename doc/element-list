@@ -1,0 +1,10 @@
+com.shikharani.onlinelearningplatform
+com.shikharani.onlinelearningplatform.config
+com.shikharani.onlinelearningplatform.constants
+com.shikharani.onlinelearningplatform.controller
+com.shikharani.onlinelearningplatform.dto
+com.shikharani.onlinelearningplatform.exception
+com.shikharani.onlinelearningplatform.model
+com.shikharani.onlinelearningplatform.repository
+com.shikharani.onlinelearningplatform.service
+com.shikharani.onlinelearningplatform.service.impl

@@ -1,0 +1,86 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Shikha Learning Center</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body style="background-color:rgb(128, 255, 255);"background="register.jfif">
+	<div th:insert="headers/header_registration.html"></div>
+
+	<div class="container" >
+		<div class="row col-md-8 offset-md-2">
+			<div class="card">
+				<div class="card-header">
+					<h2 class="text-center">Registration</h2>
+				</div>
+
+				<span th:if="${successMessage}" th:text="${successMessage}" class="alert alert-info"></span>
+				<span th:if="${errorMessage}" th:text="${errorMessage}" class="alert alert-danger"></span>
+
+				<div class="card-body">
+					<form method="post" role="form" th:action="@{/register/save}" th:object="${userModel}">
+
+						<div class="form-group mb-3">
+							<label class="form-label">Email</label>
+							<input class="form-control" id="username" name="username" placeholder="Enter email address"
+								th:field="*{username}" type="email" required />
+							<p th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}" />
+						</div>
+						<div class="form-group mb-3">
+							<label class="form-label">Password</label>
+							<input class="form-control" id="password" name="password" placeholder="Enter password"
+								th:field="*{password}" type="password" required />
+							<p th:errors="*{password}" class="text-danger" th:if="${#fields.hasErrors('password')}"></p>
+						</div>
+
+						<div class="form-group mb-3">
+							<label class="form-label">First Name</label>
+							<input class="form-control" id="fName" name="fName" placeholder="Enter Fname"
+								th:field="*{fName}" type="text" required />
+							<p th:errors="*{fName}" class="text-danger" th:if="${#fields.hasErrors('fName')}"></p>
+						</div>
+
+						<div class="form-group mb-3">
+							<label class="form-label">Last Name</label>
+							<input class="form-control" id="lName" name="lName" placeholder="Enter LName"
+								th:field="*{lName}" type="text" required />
+							<p th:errors="*{lName}" class="text-danger" th:if="${#fields.hasErrors('lName')}"></p>
+						</div>
+
+						<div class="form-group mb-3">
+							<label class="form-label">Phone Number</label>
+							<input class="form-control" id="phone" name="phone" placeholder="Enter phone"
+								th:field="*{phone}" type="number" required />
+							<p th:errors="*{phone}" class="text-danger" th:if="${#fields.hasErrors('phone')}"></p>
+						</div>
+
+						<div class="form-group mb-3">
+							<label class="form-label">Zip</label>
+							<input class="form-control" id="zip" name="zip" placeholder="Enter Zip" th:field="*{zip}"
+								type="number" required />
+							<p th:errors="*{zip}" class="text-danger" th:if="${#fields.hasErrors('zip')}"></p>
+						</div>
+						<!-- Drop down for user role-->
+						<div class="form-group mb-3">
+							<label class="form-label">Role</label>
+							<select id="role" name="role" th:field="*{role}" required>
+								<option value="ROLE_STUDENT">STUDENT</option>
+								<option value="ROLE_INSTRUCTOR">INSTRUCTOR</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<button class="btn btn-primary" type="submit">Register</button>
+							<span>Already registered? <a th:href="@{/login}">Login here</a></span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

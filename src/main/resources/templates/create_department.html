@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Shikha Learning Center</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body background="admin.avif" >
+
+	<div th:insert="headers/header_admin.html" style="width: 100%;"></div>
+
+	<p class="text-center">
+		<span class="text-center fw-bold text-decoration-underline fs-2 bold-text">Create a new Department<br></span>
+		<span th:if="${successMessage}" th:text="${successMessage}" class="alert-info fw-bold"></span>
+		<span th:if="${errorMessage}" th:text="${errorMessage}" class="alert-danger fw-bold"></span>
+	</p>
+
+	<div class="card-body">
+		<form method="post" role="form" th:action="@{/saveNewDepartment}" classTitle="form-horizontal"
+			th:object="${departmentModel}"
+			        style="border: 2px solid #333; padding: 20px; border-radius: 10px;">
+>
+
+			<div class="form-group mb-3">
+				<label class="control-label"> Name</label>
+				<input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" style="border: 2px solid #555;"/>
+			</div>
+
+			<div class="form-group mb-3">
+				<label class="control-label"> Description</label>
+				<input type="text" id="description" name="description" class="form-control"
+					placeholder="Enter Description"style="border: 2px solid #555;" />
+			</div>
+
+			<div class="form-group mb-3">
+				<label class="control-label"> Head Name</label>
+				<input type="text" id="head_of_department" name="head_of_department" class="form-control"
+					placeholder="Enter Head"style="border: 2px solid #555;" />
+			</div>
+
+			<div class="form-group mb-3">
+				<label class="control-label">Year of start</label>
+				<input type="number" id="yearOfStart" name="yearOfStart" class="form-control"
+					placeholder="Enter Year of start" style="border: 2px solid #555;"/>
+			</div>
+
+			<div class="form-group mb-3">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+	</div>
+</bodybackground="student.avif">
+
+</html>
